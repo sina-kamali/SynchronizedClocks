@@ -1,1 +1,124 @@
-/* You can add global styles to this file, and also import other style files */
+// =================== Global variable =================
+:root {
+  --body-background-color: #282828;
+  --body-foreground-color: #ffffff;
+  --button-save-foreground-color: #212529;
+  --button-save-background-color: #e9ecef;
+  --digital-clock-shadow: 0 0 20px #0aafe6, 0 0 20px rgb(10 175 230 / 0%);
+  --analog-clock-shadow: -4px -4px 10px rgba(67,67,67,0.5),
+  inset 4px 4px 10px rgba(0,0,0,0.5),
+  inset -4px -4px 10px rgba(67,67,67,0.5),
+  4px 4px 10px rgba(0,0,0,0.3);
+  --analog-clock-marking-background-color: #e60a0a;
+  --analog-clock-secondary-marking-background-color: #bdbdcb;
+  --analog-clock-center-dot: #4d4b63;
+  --analog-clock-hand: #0aafe6;
+  --analog-clock-second-hand: #ee791a;
+  --active-toggle: #4BD763;
+  --active-toggle-disabled: #3bab4e;
+  --default-toggle: #ffff;
+  --default-toggle-disabled: #b7b7b7;
+  --toggle-border: rgba(0, 0, 0, 0.24);
+  --toggle-background:  #e6e6e6;
+  --toggle-disabled: #babcbd;
+  --toggle-disabled-overly: #000000;
+}
+
+// =================== General Containers =================
+body {
+  background-color: var(--body-background-color);
+  color: var(--body-foreground-color);
+  font-family: 'Share Tech Mono', monospace;
+}
+.container-fluid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+}
+.row {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.col-12,.col-6 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-6 {
+    width: 66.66666667%;
+  }
+}
+@media (min-width: 992px) {
+  .col-6 {
+    width: 50%;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.btn-save {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: 1px solid var(--body-background-color);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  color: var(--button-save-foreground-color);
+  background-color: var(--button-save-background-color);
+  min-width: 5rem;
+}
+
+// =================== Spacings =================
+.pt-2 {
+  padding: 0.5rem;
+}
+.p-2 {
+  padding: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem
+}
+
+.mt-2 {
+  margin-top: 0.5rem
+}
+
+// =================== Positioning =================
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+.left {
+  text-align: left;
+  justify-content: start;
+}
+.right {
+  text-align: right;
+  justify-content: end;
+}

@@ -1,0 +1,11 @@
+#clock {
+  color: var(--body-foreground-color);
+  text-align: center;
+  color: var(--body-foreground-color);
+  text-shadow: var(--digital-clock-shadow);
+  .time {
+    letter-spacing: 0.05em;
+    font-size: 80px;
+    padding: 5px 0;
+  }
+}
