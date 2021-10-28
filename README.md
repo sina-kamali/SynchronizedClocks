@@ -13,4 +13,4 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 This application has the ability to adjust each clock's time. When the time on one clock is adjusted, the time on the other clock automatically synchronized. This application has 1 analog clock face and 1 digital clock face.
 
-## Hosted Solution URL: (http://clocks.alltechs.ca)
+## Live Solution: [Synchronized Clocks](http://clocks.alltechs.ca)
