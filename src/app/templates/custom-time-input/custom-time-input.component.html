@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12 mb-2 center d-flex flex-wrap">
+    <div class="flex-1 p-2 drop-down">
+      <app-custom-drop-down [id]="'Hours'" [(value)]="clockState.Hours" [name]="'Hours'" [list]="getNumberArray(24, true)"></app-custom-drop-down>
+    </div>
+    <div class="flex-1 p-2 drop-down">
+      <app-custom-drop-down [id]="'Minutes'" [(value)]="clockState.Minutes" [name]="'Minutes'" [list]="getNumberArray(60)"></app-custom-drop-down>
+    </div>
+    <div class="flex-1 p-2 drop-down">
+      <app-custom-drop-down [id]="'Seconds'" [(value)]="clockState.Seconds" [name]="'Seconds'" [list]="getNumberArray(60)"></app-custom-drop-down>
+    </div>
+  </div>
+  <div class="col-12 center mb-2">
+    <a class="btn btn-save" (click)="emitChanges()" id="overrideClockState">
+      <i class="icon-checkmark" style="vertical-align: middle"></i>
+      Save
+    </a>
+  </div>
+</div>

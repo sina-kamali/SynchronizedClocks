@@ -5,6 +5,12 @@
         <div class="left" style="flex: 1">
           Sina Kamali-Anaraki
         </div>
+        <div class="right" style="flex: 1; max-width: 10rem">
+          <a class="icon-sun icon"></a> <app-toggle-switch style="display: inline-block; margin-right: 0.5rem; margin-left: 0.5rem;" [value]="themeService.themeStatus" (valueChange)="themeService.toggleTheme($event)"></app-toggle-switch> <a class="icon-moon-fill icon"></a>
+        </div>
+      </div>
+      <div class="col-12">
+        <app-custom-time-input (clockStateChange)="overrideClockState($event)"></app-custom-time-input>
       </div>
       <div class="col-6 d-flex flex-column center">
         <app-analog [clockState]="clockDetails" (clockStateChange)="overrideClockState($event)"></app-analog>
@@ -15,5 +21,6 @@
     </div>
   </div>
 </main>
+
 <!--We don't need this for now -->
 <!--<router-outlet></router-outlet>-->

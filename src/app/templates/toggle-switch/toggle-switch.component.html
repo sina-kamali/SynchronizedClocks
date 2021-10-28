@@ -1,0 +1,10 @@
+<div class="" style="display: flex; flex-wrap: wrap;">
+  <div class="" style="flex: 1; line-height: 3; display: flex;" *ngIf="title">
+    {{title}}&nbsp;
+  </div>
+  <div class="toggle-container" (click)="valueChange.emit(!value)">
+    <span class="toggle-switch {{value ? 'selected' : ''}}" >
+      <i class=""></i>
+    </span>
+  </div>
+</div>

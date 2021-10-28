@@ -60,11 +60,14 @@ export class ThemeService {
   toggleTheme(isDarkTheme: boolean): void {
     this.isDarkTheme = isDarkTheme;
     const bodyStyles = document.body.style;
+
+    // Update SCSS Variables
     const updateSCSSVariables = (scssVariables: Theme[]): void => {
       ArrayHelper.forEach(scssVariables, (variable: Theme) => {
         bodyStyles.setProperty(variable.Property, variable.Value);
       });
     }
+
     updateSCSSVariables(this.isDarkTheme ? this.DARK_THEME : this.LIGHT_THEME);
   }
 

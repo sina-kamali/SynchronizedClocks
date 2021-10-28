@@ -1,0 +1,4 @@
+<label for="{{id}}" class="label">{{name}}</label>
+<select [id]="id" class="select mt-2" [(ngModel)]="value" (ngModelChange)="emitChanges()">
+  <option *ngFor="let item of list" [value]="item">{{item}}</option>
+</select>

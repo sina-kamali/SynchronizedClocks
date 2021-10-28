@@ -4,4 +4,7 @@
       <p id="digital-clock" class="time">{{clockState.Hours | twoDigits}}:{{clockState.Minutes | twoDigits}}:{{clockState.Seconds | twoDigits}}</p>
     </div>
   </div>
+  <div class="col-12">
+    <app-custom-time-input (clockStateChange)="emitChanges($event)"></app-custom-time-input>
+  </div>
 </div>

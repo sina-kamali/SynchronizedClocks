@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ClockState, DEFAULT_CLOCK_STATE} from "./shared/interfaces/clock-state";
 import {ThemeService} from "./shared/services/theme.service";
+import {CommonService} from "./shared/services/common.service";
 
 @Component({
   selector: 'app-root',
@@ -9,20 +10,20 @@ import {ThemeService} from "./shared/services/theme.service";
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  private currentClockState: ClockState = {...DEFAULT_CLOCK_STATE};
-  newtClockState: ClockState = {...DEFAULT_CLOCK_STATE};
+  private currentClockState: ClockState = this.commonService.getObjectDeepCopy(DEFAULT_CLOCK_STATE);
   private clockInterval: any = null;
 
-  constructor(public themeService: ThemeService) {
-  }
+  constructor(public themeService: ThemeService, private commonService: CommonService) {}
 
   ngOnInit(): void {
+    // On the first load get current time
     const now = new Date()
     const newClockState: ClockState = {
       Hours: now.getHours(),
       Minutes: now.getMinutes(),
       Seconds: now.getSeconds()
     };
+    // Set the clocks times
     this.overrideClockState(newClockState);
   }
 
@@ -35,8 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!clockState) {
       return;
     }
+    // Set everything back to default
     this.clearState();
-    this.currentClockState = {...clockState};
+    // Update the current clock state
+    this.currentClockState = this.commonService.getObjectDeepCopy(clockState);
+    // Start the live clock
     this.startClock();
   }
 
@@ -47,31 +51,37 @@ export class AppComponent implements OnInit, OnDestroy {
       this.clockInterval = null;
     }
     // Set the clock state to default
-    this.currentClockState = {...DEFAULT_CLOCK_STATE};
-    this.newtClockState = {...DEFAULT_CLOCK_STATE};
+    this.currentClockState = this.commonService.getObjectDeepCopy(DEFAULT_CLOCK_STATE);
   }
 
   private startClock(): void {
+
     const clock = (): void => {
 
+      // Add a second
       this.currentClockState.Seconds++;
 
       if (this.currentClockState.Seconds === 60) {
         this.currentClockState.Minutes++;
         this.currentClockState.Seconds = 0;
       }
+
       if (this.currentClockState.Minutes === 60) {
         this.currentClockState.Hours++;
         this.currentClockState.Minutes = 0;
         this.currentClockState.Seconds = 0;
       }
+
       if (this.currentClockState.Hours === 24) {
         this.currentClockState.Hours = 0;
         this.currentClockState.Minutes = 0;
         this.currentClockState.Seconds = 0;
       }
-      this.currentClockState = {...this.currentClockState};
+
+      // Get deep copy from the object
+      this.currentClockState = this.commonService.getObjectDeepCopy(this.currentClockState);
     }
+    // Set the interval 1s
     this.clockInterval = setInterval(clock, 1000);
   }
 

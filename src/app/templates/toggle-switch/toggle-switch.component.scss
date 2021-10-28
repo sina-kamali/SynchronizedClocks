@@ -1,0 +1,91 @@
+
+.toggle-container {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.toggle-switch {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle-switch i {
+  position: relative;
+  display: inline-block;
+  margin-right: .5rem;
+  width: 70px;
+  height: 26px;
+  background-color: var(--toggle-background);
+  border-radius: 23px;
+  vertical-align: text-bottom;
+  transition: all 0.3s linear;
+}
+
+.toggle-switch i::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 66px;
+  height: 22px;
+  background-color: var(--default-toggle);
+  border-radius: 11px;
+  transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+  transition: all 0.25s linear;
+}
+
+.toggle-switch i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background-color: var(--default-toggle);
+  border-radius: 11px;
+  box-shadow: 2px 1px 2px var(--toggle-border);
+  transform: translate3d(2px, 2px, 0);
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-switch.selected i::after {
+  transform: translate3d(2px, 2px, 0);
+}
+
+.toggle-switch.selected i::after { transform: translate3d(16px, 2px, 0); }
+
+.toggle-switch.selected i { background-color: var(--active-toggle); }
+.disabled.toggle-switch.selected i { background-color: var(--active-toggle-disabled); }
+.disabled.toggle-switch i::before { background-color: var(--default-toggle-disabled); }
+
+.toggle-switch.selected i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+
+.toggle-switch.selected i::after { transform: translate3d(2.9rem, 2px, 0); }
+
+.inherit-text::before {
+  content: "Inherit" !important;
+  font-size: 9pt;
+  font-weight: bold;
+  padding-left: 1.6rem;
+  font-style: normal;
+  line-height: 1.8;
+  color: var(--toggle-disabled) !important;;
+}
+
+.inherit-text-on {
+  font-size: 9pt;
+  font-weight: bold;
+  position: absolute;
+  margin-left: .4rem;
+  margin-top: -0.2rem;
+  color: var(--default-toggle) !important;
+}
+.overlay {
+  background-color: var(--toggle-disabled-overly);
+  opacity: 0.2;
+  width: 70px;
+  height: 27px;
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 1;
+}

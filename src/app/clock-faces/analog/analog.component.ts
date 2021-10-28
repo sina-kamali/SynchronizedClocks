@@ -12,7 +12,7 @@ export class AnalogComponent implements OnInit {
     if (!clockState) {
       return
     }
-    this.adjustClockHandles(clockState);
+    this.adjustClockHands(clockState);
   }
 
   @Output() clockStateChange = new EventEmitter<ClockState>();
@@ -28,12 +28,12 @@ export class AnalogComponent implements OnInit {
   ngOnInit(): void {}
 
   emitChanges(clockState: ClockState): void {
-    this.adjustClockHandles(clockState);
+    this.adjustClockHands(clockState);
     this.clockStateChange.emit(clockState)
   }
 
 
-  private adjustClockHandles(clockState: ClockState): void {
+  private adjustClockHands(clockState: ClockState): void {
     this.secondsDegrees = `rotate(${((clockState.Seconds / 60) * 360) + 90}deg)`;
     this.minsDegrees = `rotate(${((clockState.Minutes / 60) * 360) + ((clockState.Seconds /60)*6) + 90}deg)`;
     this.hourDegrees = `rotate(${((clockState.Hours / 12) * 360) + ((clockState.Minutes/60)*30) + 90}deg)`;
